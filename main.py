@@ -1,5 +1,5 @@
-import scraper
-import fileIO
+from modules import scraper
+from modules import fileIO
 import argparse
 
 def main():
