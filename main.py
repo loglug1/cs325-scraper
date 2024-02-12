@@ -5,7 +5,7 @@ import argparse
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--in", "-i", dest="file_in", type=str, help="Path to file with a url on each line to scrape and output to file.", required=True)
-    parser.add_argument("--out", "-o", dest="file_out", default=".", type=str, help="Directory to save scraped articles in.", required=True)
+    parser.add_argument("--out", "-o", dest="file_out", default=".", type=str, help="Directory to save scraped articles in.", required=False)
     args = parser.parse_args()
 
     urls = fileIO.get_line_list(args.file_in)
