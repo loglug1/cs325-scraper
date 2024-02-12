@@ -7,6 +7,12 @@ Clone and change directory to the repository by running the following commands
     $ git clone https://github.com/loglug1/cs325-scraper.git
     $ cd cs325-scraper
 
+Verify you have the conda command by running
+
+    $ conda --version
+
+If you get an error please visit https://docs.anaconda.com/free/miniconda/miniconda-install/ for instructions on installing miniconda.
+
 Import conda environment from requirements.yml using the following command
 
     $ conda env create -f requirements.yml
