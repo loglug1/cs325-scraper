@@ -5,12 +5,14 @@ from pyquery import PyQuery
 def get_source(url: str) -> str | None:
     try:
         page = requests.get(url, timeout=5)
+        if page.ok:
+            return page.text
     except requests.exceptions.Timeout:
         print("Timed Out")
-    if page.ok:
-        return page.text
-    else:
-        return None
+    except requests.exceptions.MissingSchema:
+        print("Invalid URL Schema, try adding http:// or https://")
+    except requests.exceptions.RequestException:
+        print(f"Error while fetching {url} source")
 
 ## returns text inside HTML element selected by selector: '.article__content' would select an element with the 
 ## class 'article__content' and '#title' would select the element with the id 'title'. For more examples, research jQuery selectors
@@ -30,7 +32,7 @@ def get_cnn_title(page_src: str) -> str:
 
 def main():
     url = "https://www.cnn.com/2024/02/12/europe/trump-comments-reaction-nato-stoltenberg-intl-hnk/index.html"
-    page_source = get_source(url)
+    page_source = get_source("https://tri-quad.net")
 
     print(get_cnn_title(page_source))
     print(get_cnn_article(page_source))

@@ -14,7 +14,8 @@ def main():
         title = scraper.get_cnn_title(source)
         article = scraper.get_cnn_article(source)
         filename = args.file_out + "/" + title.replace(" ", "_") + ".txt"
-        fileIO.write_file(filename, article)
+        if filename != args.file_out + "/.txt":
+            fileIO.write_file(filename, article)
 
 if __name__=="__main__":
     main()
